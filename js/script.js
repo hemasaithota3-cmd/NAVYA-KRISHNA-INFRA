@@ -178,8 +178,8 @@ function handleFormSubmit(event) {
     event.preventDefault();
 
     emailjs.sendForm(
-        "service_0k6gu9h",
-        "YOUR_TEMPLATE_ID",
+        "service_b7bqayw",
+        "template_x5t3868",
         "#contactForm"
     ).then(function () {
 
