@@ -1,0 +1,50 @@
+/* ============================================================
+   VERITAS BUILDERS - RESPONSIVE STYLES
+   Breakpoints: <=1024px (tablet), <=768px (mobile)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .founder-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .quotes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .project-card-large {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hero-title {
+    font-size: 34px;
+  }
+  .about-cards-grid, .services-grid, .gallery-grid, .why-grid, .quotes-grid {
+    grid-template-columns: 1fr;
+  }
+  .founder-grid {
+    padding: 28px;
+  }
+}
