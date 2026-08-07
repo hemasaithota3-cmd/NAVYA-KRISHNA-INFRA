@@ -175,11 +175,25 @@ function closeLightbox() {
    Contact Form Handler (called via inline onsubmit handler in HTML)
 ------------------------------------------------------------ */
 function handleFormSubmit(event) {
-  event.preventDefault();
-  const toast = document.getElementById('toastMessage');
-  toast.classList.add('show');
-  document.getElementById('contactForm').reset();
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 4000);
+    event.preventDefault();
+
+    emailjs.sendForm(
+        "service_0k6gu9h",
+        "YOUR_TEMPLATE_ID",
+        "#contactForm"
+    ).then(function () {
+
+        const toast = document.getElementById("toastMessage");
+        toast.classList.add("show");
+
+        document.getElementById("contactForm").reset();
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+
+    }).catch(function (error) {
+        console.error(error);
+        alert("Failed to send inquiry.");
+    });
 }
