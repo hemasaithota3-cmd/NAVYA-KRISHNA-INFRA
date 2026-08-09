@@ -7,22 +7,41 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ------------------------------------------------------------
-     1. Mobile Menu Toggle
-  ------------------------------------------------------------ */
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+ /* ------------------------------------------------------------
+   1. Mobile Menu Toggle
+------------------------------------------------------------ */
 
-  hamburgerBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// Open / close menu with hamburger button
+hamburgerBtn.addEventListener('click', (event) => {
+  event.stopPropagation();
+  mobileMenu.classList.toggle('open');
+});
+
+// Close menu when a navigation link is clicked
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
   });
+});
 
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-    });
-  });
+// Close menu automatically when scrolling
+window.addEventListener('scroll', () => {
+  mobileMenu.classList.remove('open');
+});
 
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+  if (
+    mobileMenu.classList.contains('open') &&
+    !mobileMenu.contains(event.target) &&
+    !hamburgerBtn.contains(event.target)
+  ) {
+    mobileMenu.classList.remove('open');
+  }
+});
   /* ------------------------------------------------------------
      2. Hero Background Video
      The video fades in only once assets/videos/hero-video.mp4
