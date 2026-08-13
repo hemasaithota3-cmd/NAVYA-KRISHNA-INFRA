@@ -191,11 +191,22 @@ function closeLightbox() {
 }
 
 /* ------------------------------------------------------------
-   Contact Form Handler (called via inline onsubmit handler in HTML)
+ /* ------------------------------------------------------------
+   Contact Form Handler
 ------------------------------------------------------------ */
 function handleFormSubmit(event) {
     event.preventDefault();
 
+    // Check required Privacy Policy consent
+    const privacyConsent = document.getElementById("privacyConsent");
+
+    if (!privacyConsent || !privacyConsent.checked) {
+        alert("Please agree to the Privacy Policy before submitting the form.");
+        privacyConsent?.focus();
+        return;
+    }
+
+    // Send form only after consent is given
     emailjs.sendForm(
         "service_b7bqayw",
         "template_x5t3868",
